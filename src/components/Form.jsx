@@ -30,7 +30,7 @@ function FormLogin({ setIsAdmin }) {
             <form className='col-4 mt-5'>
                 <div className="form-group mb-2 text-center">
                     <label htmlFor="text">Usuario</label>
-                    <input type="text" className="form-control text-center" id="text" placeholder="Ingresa tu nombre d eusuario"
+                    <input type="text" className="form-control text-center" id="text" placeholder="Ingresa tu nombre de usuario"
                         onChange={e => { setUsuario(e.target.value) }} />
                 </div>
                 <div className="form-group mb-2 text-center">
