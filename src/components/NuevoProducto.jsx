@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
+import { API } from './constants';
 
-const NuevoProducto = ({ productos, setProductos }) => {
+const NuevoProducto = ({ actualizar }) => {
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState('');
 
-    const nuevo = (e) => {
+    const nuevo = async(e) => {
         e.preventDefault();
-        const newProduct = { [productName]: { precioKilo: productPrice } };
-        setProductos({ ...productos, ...newProduct });
-        setProductName('');
-        setProductPrice('');
+        try {
+            const newProduct = await fetch(`${API}/productos/`,{
+                method:'POST',
+                headers:{
+                    'Content-type': 'application/json'
+                },
+                body:JSON.stringify({nombre:productName,precio:productPrice})
+            })
+            actualizar();
+            setProductName('');
+            setProductPrice('');
+        } catch (error) {
+            alert('No se pudo agregar el producto, intenta de nuevo')
+        }
 
     }
 

@@ -1,19 +1,25 @@
 import React from 'react'
+// import { API } from './constants'
 
-const TablaProducto = ({ productos }) => {
+const TablaProducto = ({ productos,eliminar }) => {
+    
     return (
         <table className="table table-success table-striped mt-2">
             <thead>
                 <tr>
                     <th>Nombre de producto</th>
                     <th>Precio</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
-                {Object.entries(productos).map(([nombre, { precioKilo }]) => (
-                    <tr key={nombre}>
-                        <td>{nombre}</td>
-                        <td> ${precioKilo} .00</td>
+                {productos.map((producto,key) => (
+                    <tr key={key}>
+                        <td>{producto.nombre_producto}</td>
+                        <td> ${producto.precio}</td>
+                        <td><button className='btn btn-danger' onClick={()=>{
+                            eliminar(producto.id_producto);
+                        }}>Eliminar</button></td>
                     </tr>
                 ))}
             </tbody>

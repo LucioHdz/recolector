@@ -1,0 +1,1 @@
+export const API = 'https://recolector-api.onrender.com'
